@@ -2,6 +2,8 @@ version: '3.8'
 
 services:
   discord-bot:
-    build: .
+    build:
+      context: .
+      network: host  # <--- Forces Docker BuildKit to use your server's internet
     container_name: coolidy_bot
     restart: always
