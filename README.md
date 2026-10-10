@@ -2,6 +2,8 @@
 
 Lyra is a friendly, slightly futuristic Discord bot built in Python with `discord.py`, SQLite, and `aiosqlite`.
 
+### Lyra is currently in BETA. If you have any bugs, please make an issue so we can fix them ASAP.
+
 ## Features
 
 - Feature toggles stored per Discord guild
