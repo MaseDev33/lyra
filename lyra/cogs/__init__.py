@@ -1,0 +1,1 @@
+"""Discord cogs for Lyra."""

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lyra Docs</title>
+  <style>
+    :root { --blue:#3B82F6; --blue-deep:#1D4ED8; --soft:#93C5FD; --bg:#0F172A; --ink:#e2e8f0; --muted:#94A3B8; --card:#111827; --border:rgba(147,197,253,0.38); }
+    body { margin:0; font-family:Arial,sans-serif; background:linear-gradient(180deg,#0F172A,#111827); color:var(--ink); line-height:1.7; }
+    .wrap { max-width:980px; margin:0 auto; padding:40px 24px 80px; }
+    nav { display:flex; justify-content:space-between; align-items:center; gap:16px; border-bottom:1px solid var(--border); padding-bottom:16px; margin-bottom:28px; }
+    .brand { font-weight:700; letter-spacing:0.08em; text-transform:uppercase; }
+    .links { display:flex; gap:18px; flex-wrap:wrap; }
+    a { color:var(--soft); text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    .card { background:rgba(17,24,39,0.85); border:1px solid var(--border); border-radius:16px; padding:24px; margin:18px 0; }
+    h1,h2,h3 { color:#f8fbff; }
+    ul { padding-left:20px; }
+    code { background:rgba(59,130,246,0.14); padding:2px 6px; border-radius:6px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav>
+      <div class="brand">Lyra</div>
+      <div class="links">
+        <a href="./">Home</a>
+        <a href="./">Docs</a>
+        <a href="./tos/">Terms</a>
+        <a href="./privacy/">Privacy</a>
+        <a href="./invite/">Invite</a>
+      </div>
+    </nav>
+
+    <h1>Lyra Documentation</h1>
+    <div class="card">
+      <p>Lyra is a friendly, slightly futuristic Discord bot built to feel warm, helpful, and a little bit robotic.</p>
+      <p>Use this documentation to understand the bot's setup, feature toggles, database design, and project structure.</p>
+    </div>
+
+    <div class="card">
+      <h2>Quick start</h2>
+      <ol>
+        <li>Install dependencies with <code>pip install -r requirements.txt</code></li>
+        <li>Copy <code>.env.example</code> to <code>.env</code> and set your Discord token</li>
+        <li>Run <code>python -m lyra.main</code></li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h2>Features</h2>
+      <ul>
+        <li>Guild-level feature toggles</li>
+        <li>Moderation and logging support</li>
+        <li>Leveling, reminders, and mini-games</li>
+        <li>Blue-themed embeds and consistent bot UX</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Policies</h2>
+      <ul>
+        <li><a href="./tos/">Terms of Service</a></li>
+        <li><a href="./privacy/">Privacy Policy</a></li>
+        <li><a href="./invite/">Bot Invite</a></li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

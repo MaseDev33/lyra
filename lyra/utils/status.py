@@ -1,0 +1,28 @@
+from __future__ import annotations
+
+ROTATING_STATUS_MESSAGES = [
+    "keeping an eye on things",
+    "running on blue pixels",
+    "watching over the server",
+    "probably doing math",
+    "all systems looking good",
+    "learning the ropes",
+    "keeping things in line",
+    "checking the circuits",
+    "sorting server signals",
+    "keeping chat in orbit",
+    "counting tiny data stars",
+    "standing by to help",
+    "making things run smoothly",
+    "watching the channels",
+    "tuning the blue pixels",
+    "organizing a few bits",
+    "thinking in the background",
+    "keeping the server cozy",
+    "ready when you need me",
+    "mapping the conversation",
+    "checking in with everyone",
+    "keeping an orderly orbit",
+    "running a quick system check",
+    "listening for the next task",
+]
