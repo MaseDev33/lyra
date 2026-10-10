@@ -25,4 +25,7 @@ ROTATING_STATUS_MESSAGES = [
     "keeping an orderly orbit",
     "running a quick system check",
     "listening for the next task",
+    "getting my brain ready",
+    "moderating servers",
+    "playing trivia"
 ]
