@@ -4,11 +4,9 @@ services:
   discord-bot:
     build:
       context: .
-      network: host  # Kept from previous step to fix your pip internet issue
+      network: host
     container_name: coolidy_bot
     restart: always
     volumes:
-      - lyra_data:/data  # Maps the named volume to /data inside the container
-
-volumes:
-  lyra_data:  # Defines the persistent named volume
+      # This creates a persistent bind mount on your host machine
+      - /data/coolify/apps/lyra:/app/data
