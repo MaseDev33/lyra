@@ -7,7 +7,7 @@ The software is free to use, copy, modify, and redistribute by anyone for any pu
 The intent of this license is to promote openness and collaboration while preserving the requirement that branding be changed in any redistributed or modified version.
 
 You may:
-- use the software for personal or commercial purposes
+- use the software for personal, commercial, or enterprise purposes
 - modify the software
 - distribute the software or modified versions
 - incorporate it into other projects
