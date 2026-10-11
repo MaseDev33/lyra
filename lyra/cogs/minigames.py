@@ -41,13 +41,22 @@ class MinigamesCog(commands.Cog):
 
     @app_commands.command(name="trivia", description="Start a quick trivia round")
     async def trivia(self, interaction: discord.Interaction):
+        try:
+            await interaction.response.defer(ephemeral=True, thinking=True)
+        except discord.InteractionResponded:
+            pass
+        except discord.HTTPException as error:
+            if error.code == 10062:
+                return
+            if error.code != 40060:
+                raise
         if interaction.guild_id is None:
-            await interaction.response.send_message(
+            await interaction.followup.send(
                 f"{LYRA_EMOJI} Trivia can only be played in a server.", ephemeral=True
             )
             return
         if not await self.bot.feature_manager.is_enabled(str(interaction.guild_id), "minigames"):
-            await interaction.response.send_message(
+            await interaction.followup.send(
                 f"{LYRA_EMOJI} Mini-games are currently turned off in this server.",
                 ephemeral=True,
             )
@@ -58,9 +67,10 @@ class MinigamesCog(commands.Cog):
             raise RuntimeError(f"Trivia question bank is empty: {TRIVIA_FILE}")
         question = random.choice(questions)
         embed = build_embed("Trivia", question["question"])
-        await interaction.response.send_message(
+        await interaction.followup.send(
             embed=embed,
             view=RevealAnswerView(question["answer"], interaction.user.id),
+            ephemeral=True,
         )
 
 

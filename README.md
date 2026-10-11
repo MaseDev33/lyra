@@ -11,6 +11,7 @@ Lyra is a friendly, slightly futuristic Discord bot built in Python with `discor
 - Modular cogs for moderation, logging, utilities, leveling, and mini-games
 - SQLite-backed persistence with a migration-ready structure
 - Slash command interface
+- Optional per-server GitHub activity feeds
 
 ## Run locally
 
@@ -26,7 +27,21 @@ Lyra is a friendly, slightly futuristic Discord bot built in Python with `discor
    python -m lyra.main
    ```
 
-Slash commands are globally registered at startup and may take time to appear in every server. For immediate development updates, set `LYRA_DEV_GUILD_ID` in `.env` to a test server ID; commands will then be synced to that server on startup.
+Slash commands are globally registered at startup and may take time to appear in every server. For immediate development updates, set `LYRA_DEV_GUILD_ID` in `.env` to a test server ID; commands will also be synced to that server on startup.
+
+## GitHub activity feeds
+
+Set `GITHUB_TOKEN` to a GitHub personal access token and optionally set
+`GITHUB_POLL_INTERVAL` (seconds; minimum 60, default 300). Feed polling uses the
+token for both public and private repositories so requests use the dedicated
+account's rate limit and permissions. Private repositories must be accessible
+to that account. Enable the feature for a server with `/lyra enable gitfeed`,
+then configure feeds with `/gitfeed add`.
+
+GitHub's user activity endpoint contains only limited recent public events, and
+repository events (including stars) are best-effort rather than a complete
+history. Lyra polls the API and does not provide real-time or exhaustive
+monitoring.
 
 ## Database persistence in Docker or containers
 

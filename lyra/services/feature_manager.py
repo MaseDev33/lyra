@@ -8,6 +8,7 @@ DEFAULT_FEATURES = {
     "server_utils": True,
     "leveling": True,
     "minigames": False,
+    "gitfeed": False,
 }
 
 

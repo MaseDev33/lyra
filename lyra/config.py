@@ -35,3 +35,15 @@ def get_dev_guild_id() -> int | None:
     if guild_id <= 0:
         raise ValueError("LYRA_DEV_GUILD_ID must be a positive Discord server ID")
     return guild_id
+
+
+def get_github_poll_interval() -> int:
+    load_environment()
+    configured = os.getenv("GITHUB_POLL_INTERVAL", "300")
+    try:
+        interval = int(configured)
+    except ValueError as error:
+        raise ValueError("GITHUB_POLL_INTERVAL must be an integer number of seconds") from error
+    if interval < 60:
+        raise ValueError("GITHUB_POLL_INTERVAL must be at least 60 seconds")
+    return interval

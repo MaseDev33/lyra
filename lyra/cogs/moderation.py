@@ -24,11 +24,32 @@ class ModerationCog(commands.Cog):
             message if message.startswith(LYRA_EMOJI) else f"{LYRA_EMOJI} {message}"
         )
         if interaction.response.is_done():
-            await interaction.followup.send(branded_message, ephemeral=ephemeral)
+            try:
+                await interaction.followup.send(branded_message, ephemeral=ephemeral)
+            except discord.HTTPException as error:
+                if error.code not in (10062, 40060):
+                    raise
         else:
             await interaction.response.send_message(branded_message, ephemeral=ephemeral)
 
+    async def _defer(self, interaction: discord.Interaction) -> bool:
+        if interaction.response.is_done():
+            return True
+        try:
+            await interaction.response.defer(ephemeral=True, thinking=True)
+            return True
+        except discord.InteractionResponded:
+            return True
+        except discord.HTTPException as error:
+            if error.code == 40060:
+                return True
+            if error.code == 10062:
+                return False
+            raise
+
     async def _check_available(self, interaction: discord.Interaction) -> bool:
+        if not await self._defer(interaction):
+            return False
         if interaction.guild is None:
             await self._respond(
                 interaction,
@@ -265,7 +286,6 @@ class ModerationCog(commands.Cog):
                 "Purge is only available in a server text channel.", ephemeral=True
             )
             return
-        await interaction.response.defer(ephemeral=True)
         try:
             deleted = await interaction.channel.purge(limit=amount)
         except discord.Forbidden:
